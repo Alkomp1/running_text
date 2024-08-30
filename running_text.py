@@ -1,6 +1,8 @@
 import cv2
 import numpy as np
 
+input_text = input()
+
 def create_running_text_video(text, video_width=100, video_height=100, duration=3, fps=24, fontsize=1, color=(255, 255, 255), output_file='running_text.avi'):
     # Вычисляем количество кадров
     num_frames = duration * fps
@@ -30,4 +32,4 @@ def create_running_text_video(text, video_width=100, video_height=100, duration=
     video.release()
 
 # Пример использования функции
-create_running_text_video("день", video_width=100, video_height=100, duration=3, fontsize=1, color=(255, 255, 255), output_file='running_text.avi')
+create_running_text_video(input_text, video_width=100, video_height=100, duration=3, fontsize=1, color=(255, 255, 255), output_file='running_text.avi')
