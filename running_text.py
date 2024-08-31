@@ -11,14 +11,15 @@ def create_running_text_video(text, video_width=100, video_height=100, duration=
     fourcc = cv2.VideoWriter_fourcc(*'XVID')
     video = cv2.VideoWriter(output_file, fourcc, fps, (video_width, video_height))
 
+    # Вычисляем позицию текста
+    text_size = cv2.getTextSize(text, cv2.FONT_HERSHEY_COMPLEX, fontsize, 1)[0]
+    text_width = text_size[0]
+    text_height = text_size[1]
+
+    # Создаем движение текста
     for i in range(num_frames):
         # Создаем пустой кадр
         frame = np.zeros((video_width, video_height, 3), dtype=np.uint8)
-
-        # Вычисляем позицию текста
-        text_size = cv2.getTextSize(text, cv2.FONT_HERSHEY_COMPLEX, fontsize, 1)[0]
-        text_width = text_size[0]
-        text_height = text_size[1]
         x_position = video_width - int(i * (text_width + video_width) / num_frames)
         y_position = (video_height + text_height) // 2
 
